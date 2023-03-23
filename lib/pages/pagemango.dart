@@ -155,33 +155,55 @@ class PageMango extends StatelessWidget {
                               ],
                             ),
                           ),
-                          
-                          Row(
-                            children: [
-                              Container(
-                                decoration: const BoxDecoration(
-                                  color: Color.fromARGB(255, 241, 170, 224),
-                                  shape: BoxShape.rectangle,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      decoration: const BoxDecoration(
+                                        color:
+                                            Color.fromARGB(255, 241, 170, 224),
+                                        shape: BoxShape.rectangle,
+                                      ),
+                                      child: const Icon(
+                                        Icons.star_border_rounded,
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        size: 30,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    const Text(
+                                      "4.8 Star",
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                  ],
                                 ),
-                                child: const Icon(
-                                  Icons.star_border_rounded,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  size: 30,
+                                Row(
+                                  children: [
+                                    Container(
+                                      decoration: const BoxDecoration(
+                                        color:
+                                            Color.fromARGB(255, 241, 170, 224),
+                                        shape: BoxShape.rectangle,
+                                      ),
+                                      child: const Icon(
+                                        Icons.access_time_outlined,
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    const Text(
+                                      "1 Day",
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                  ],
                                 ),
-                              ),
-
-                              Container(
-                                decoration: const BoxDecoration(
-                                  color: Color.fromARGB(255, 241, 170, 224),
-                                  shape: BoxShape.rectangle,
-                                ),
-                                child: const Icon(
-                                  Icons.access_time_outlined,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                ),
-                              ),
-                            ],
-                          ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
                     ),
