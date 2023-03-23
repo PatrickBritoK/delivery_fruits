@@ -170,7 +170,8 @@ class PageMango extends StatelessWidget {
                                       ),
                                       child: const Icon(
                                         Icons.star_border_rounded,
-                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         size: 30,
                                       ),
                                     ),
@@ -179,10 +180,7 @@ class PageMango extends StatelessWidget {
                                       "4.8 Star",
                                       style: TextStyle(fontSize: 16),
                                     ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
+                                    const SizedBox(width: 10),
                                     Container(
                                       decoration: const BoxDecoration(
                                         color:
@@ -191,7 +189,8 @@ class PageMango extends StatelessWidget {
                                       ),
                                       child: const Icon(
                                         Icons.access_time_outlined,
-                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                       ),
                                     ),
                                     const SizedBox(width: 10),
