@@ -2,7 +2,6 @@ import 'package:delivery_fruits/pages/pagestarted.dart';
 import 'package:flutter/material.dart';
 import 'package:delivery_fruits/pages/checkout.dart';
 
-
 class PageMango extends StatelessWidget {
   const PageMango({super.key});
 
@@ -314,10 +313,13 @@ class PageMango extends StatelessWidget {
                                         ),
                                       ),
                                       ElevatedButton(
-                                        onPressed: () {Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return Checkout();
-                      }));},
+                                        onPressed: () {
+                                          Navigator.push(context,
+                                              MaterialPageRoute(
+                                                  builder: (context) {
+                                            return const Checkout();
+                                          }));
+                                        },
                                         child: Container(
                                           width: 100,
                                           height: 50,
