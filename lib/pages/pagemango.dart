@@ -1,4 +1,7 @@
+import 'package:delivery_fruits/pages/pagestarted.dart';
 import 'package:flutter/material.dart';
+import 'package:delivery_fruits/pages/checkout.dart';
+
 
 class PageMango extends StatelessWidget {
   const PageMango({super.key});
@@ -19,7 +22,12 @@ class PageMango extends StatelessWidget {
                       Icons.arrow_back_ios_new_rounded,
                       color: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return Started();
+                      }));
+                    },
                   ),
                   const Flexible(
                     child: Center(
@@ -305,23 +313,29 @@ class PageMango extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      Container(
-                                        width: 100,
-                                        height: 50,
-                                        padding: const EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          color: Color.fromARGB(
-                                              255, 158, 122, 218),
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        child: const Center(
-                                          child: Text(
-                                            'Buy Now',
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
+                                      ElevatedButton(
+                                        onPressed: () {Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return Checkout();
+                      }));},
+                                        child: Container(
+                                          width: 100,
+                                          height: 50,
+                                          padding: const EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                            color: const Color.fromARGB(
+                                                255, 158, 122, 218),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: const Center(
+                                            child: Text(
+                                              'Buy Now',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
                                             ),
                                           ),
                                         ),

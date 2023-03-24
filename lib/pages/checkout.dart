@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:delivery_fruits/pages/pagemango.dart';
 class Checkout extends StatelessWidget {
   const Checkout({super.key});
 
@@ -13,13 +13,21 @@ class Checkout extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              children: const [
-                Icon(
-                  Icons.arrow_back_ios_new_rounded,
-                  color: Color.fromARGB(255, 2, 2, 2),
-                  size: 30,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const PageMango();
+                      }));
+                  },
+                  child:const Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: Color.fromARGB(255, 2, 2, 2),
+                    size: 30,
+                  ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(left: 122),
                   child: Text(
                     "Checkout",
@@ -283,6 +291,12 @@ class Checkout extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {},
                             child: const Text("Apply"),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color.fromARGB(
+                                    255, 158, 122, 218), // cor vermelha
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -298,60 +312,65 @@ class Checkout extends StatelessWidget {
                             width: 350,
                             height: 150,
                             color: const Color.fromARGB(255, 241, 239, 239),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Text(
-                                      'Subtotal:',
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                    Text(
-                                      'R\$220,00',
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                    height: 1,
-                                    width: 300,
-                                    child: Container(color: Colors.grey)),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Text(
-                                      'Delivery: ',
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                    Text(
-                                      'Free',
-                                      style: TextStyle(fontSize: 18),
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                    height: 1,
-                                    width: 300,
-                                    child: Container(color: Colors.grey)),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Text(
-                                      'Total: ',
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                    Text(
-                                      'R\$220,00',
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10, right: 10),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: const [
+                                      Text(
+                                        'Subtotal:',
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                      Text(
+                                        'R\$220,00',
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: 1,
+                                      width: 300,
+                                      child: Container(color: Colors.grey)),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: const [
+                                      Text(
+                                        'Delivery: ',
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                      Text(
+                                        'Free',
+                                        style: TextStyle(fontSize: 18),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: 1,
+                                      width: 300,
+                                      child: Container(color: Colors.grey)),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: const [
+                                      Text(
+                                        'Total: ',
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                      Text(
+                                        'R\$220,00',
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

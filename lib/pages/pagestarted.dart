@@ -1,3 +1,4 @@
+import 'package:delivery_fruits/pages/pagemango.dart';
 import 'package:flutter/material.dart';
 
 class Started extends StatelessWidget {
@@ -97,7 +98,9 @@ class Started extends StatelessWidget {
                   width: 250,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context){return PageMango();}));
+                    },
                     child: const Text(
                       'Get Started',
                       style: TextStyle(
