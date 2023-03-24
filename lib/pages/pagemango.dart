@@ -289,7 +289,9 @@ class PageMango extends StatelessWidget {
                                         MainAxisAlignment.spaceAround,
                                     children: [
                                       Container(
-                                        width: 100,
+                                        margin:
+                                            const EdgeInsets.only(top: 20.0),
+                                        width: 150,
                                         height: 50,
                                         padding: const EdgeInsets.symmetric(),
                                         decoration: BoxDecoration(
@@ -312,18 +314,22 @@ class PageMango extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(context,
-                                              MaterialPageRoute(
-                                                  builder: (context) {
-                                            return const Checkout();
-                                          }));
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) {
+                                                return const Checkout();
+                                              },
+                                            ),
+                                          );
                                         },
                                         child: Container(
-                                          width: 100,
+                                          margin:
+                                              const EdgeInsets.only(top: 20.0),
+                                          width: 150,
                                           height: 50,
-                                          padding: const EdgeInsets.all(5),
                                           decoration: BoxDecoration(
                                             color: const Color.fromARGB(
                                                 255, 158, 122, 218),
@@ -332,11 +338,10 @@ class PageMango extends StatelessWidget {
                                           ),
                                           child: const Center(
                                             child: Text(
-                                              'Buy Now',
+                                              'Buy now',
                                               style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
                                                 color: Colors.white,
+                                                fontSize: 16.0,
                                               ),
                                             ),
                                           ),
@@ -361,3 +366,6 @@ class PageMango extends StatelessWidget {
     );
   }
 }
+
+
+//Checkout
