@@ -24,7 +24,7 @@ class PageMango extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return Started();
+                        return const Started();
                       }));
                     },
                   ),
