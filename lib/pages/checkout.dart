@@ -370,8 +370,9 @@ class _BananaWidgetState extends State<Checkout> {
                                           if (codigoInserido == 'Pulsati' ||
                                               codigoInserido == 'a') {
                                             setState(() {
-                                              _total = _total * 0.2;
+                                              _total = _total * 0.8;
                                             });
+                                              print(_total);
                                             showDialog(
                                                 context: context,
                                                 builder:
@@ -431,8 +432,7 @@ class _BananaWidgetState extends State<Checkout> {
                             },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                const Color.fromARGB(
-                                    255, 158, 122, 218), // cor vermelha
+                                const Color.fromARGB(255, 158, 122, 218),
                               ),
                             ),
                             child: const Text("Apply"),
