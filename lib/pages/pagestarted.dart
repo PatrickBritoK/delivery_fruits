@@ -99,18 +99,18 @@ class Started extends StatelessWidget {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context){return PageMango();}));
+                      Navigator.push(context, MaterialPageRoute(builder: (context){return const PageMango();}));
                     },
-                    child: const Text(
-                      'Get Started',
-                      style: TextStyle(
-                        fontSize: 30,
-                      ),
-                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 158, 122, 218),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: const Text(
+                      'Get Started',
+                      style: TextStyle(
+                        fontSize: 30,
                       ),
                     ),
                   ),

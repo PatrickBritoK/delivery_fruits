@@ -1,10 +1,57 @@
-import 'package:flutter/material.dart';
 import 'package:delivery_fruits/pages/pagemango.dart';
-class Checkout extends StatelessWidget {
-  const Checkout({super.key});
+import 'package:flutter/material.dart';
+
+class Checkout extends StatefulWidget {
+  const Checkout({Key? key}) : super(key: key);
 
   @override
+  _BananaWidgetState createState() => _BananaWidgetState();
+}
+
+class _BananaWidgetState extends State<Checkout> {
+  int _quantitybanana = 0;
+  int _quantitybellpaper = 0;
+  double _total = 0;
+
+  final double _priceBanana = 2.0;
+  final double _pricebellpaper = 37.5;
+  double _totalBanana = 0.0;
+  double _totalbellpaper = 0.0;
+  
+  void _increment() {
+    setState(() {
+      _quantitybanana++;
+    });
+  }
+
+  void _decrement() {
+    setState(() {
+      if (_quantitybanana > 0) {
+        _quantitybanana--;
+      }
+    });
+  }
+
+  void _incrementB() {
+    setState(() {
+      _quantitybellpaper++;
+    });
+  }
+
+  void _decrementB() {
+    setState(() {
+      if (_quantitybellpaper > 0) {
+        _quantitybellpaper--;
+      }
+    });
+  }
+  
+  @override
   Widget build(BuildContext context) {
+    _totalBanana = _quantitybanana * _priceBanana;
+    _totalbellpaper = _quantitybellpaper * _pricebellpaper;
+    _total = (_priceBanana * _quantitybanana ) + (_quantitybellpaper * _pricebellpaper);
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 230, 230, 230),
       body: Padding(
@@ -82,14 +129,14 @@ class Checkout extends StatelessWidget {
                                   children: [
                                     IconButton(
                                       iconSize: 40,
-                                      onPressed: () {},
+                                      onPressed: _decrement,
                                       icon: const Icon(Icons.remove_circle),
                                       color: const Color.fromARGB(
                                           255, 175, 179, 175),
                                     ),
                                     IconButton(
                                       iconSize: 40,
-                                      onPressed: () {},
+                                      onPressed: _increment,
                                       icon: const Icon(Icons.add_circle),
                                       color: const Color.fromARGB(
                                           255, 158, 122, 218),
@@ -111,9 +158,9 @@ class Checkout extends StatelessWidget {
                               padding: const EdgeInsets.only(top: 7),
                               child: Row(
                                 children: [
-                                  const Text(
-                                    '80 pc',
-                                    style: TextStyle(
+                                   Text(
+                                    '$_quantitybanana pc',
+                                    style:const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600,
                                       color: Color.fromARGB(255, 0, 0, 0),
@@ -122,10 +169,10 @@ class Checkout extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 100),
                                     child: Row(
-                                      children: const [
+                                      children:  [
                                         Text(
-                                          '\$160.00',
-                                          style: TextStyle(
+                                          '\$${_totalBanana}',
+                                          style: const TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -189,14 +236,14 @@ class Checkout extends StatelessWidget {
                                   children: [
                                     IconButton(
                                       iconSize: 40,
-                                      onPressed: () {},
+                                      onPressed: _decrementB,
                                       icon: const Icon(Icons.remove_circle),
                                       color: const Color.fromARGB(
                                           255, 175, 179, 175),
                                     ),
                                     IconButton(
                                       iconSize: 40,
-                                      onPressed: () {},
+                                      onPressed: _incrementB,
                                       icon: const Icon(Icons.add_circle),
                                       color: const Color.fromARGB(
                                           255, 158, 122, 218),
@@ -218,9 +265,9 @@ class Checkout extends StatelessWidget {
                               padding: const EdgeInsets.only(top: 7),
                               child: Row(
                                 children: [
-                                  const Text(
-                                    '4 KG',
-                                    style: TextStyle(
+                                   Text(
+                                    '${_quantitybellpaper} KG',
+                                    style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600,
                                       color: Color.fromARGB(255, 0, 0, 0),
@@ -229,10 +276,10 @@ class Checkout extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 100),
                                     child: Row(
-                                      children: const [
+                                      children:  [
                                         Text(
-                                          '\$150.00',
-                                          style: TextStyle(
+                                          '\$${_totalbellpaper}',
+                                          style:const TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -290,13 +337,13 @@ class Checkout extends StatelessWidget {
                           padding: const EdgeInsets.only(right: 10),
                           child: ElevatedButton(
                             onPressed: () {},
-                            child: const Text("Apply"),
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                 const Color.fromARGB(
                                     255, 158, 122, 218), // cor vermelha
                               ),
                             ),
+                            child: const Text("Apply"),
                           ),
                         ),
                       ],
@@ -322,14 +369,14 @@ class Checkout extends StatelessWidget {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: const [
-                                      Text(
+                                    children:  [
+                                      const Text(
                                         'Subtotal:',
                                         style: TextStyle(fontSize: 18),
                                       ),
                                       Text(
-                                        'R\$220,00',
-                                        style: TextStyle(fontSize: 18),
+                                        '${_total}',
+                                        style:const TextStyle(fontSize: 18),
                                       ),
                                     ],
                                   ),
@@ -358,14 +405,14 @@ class Checkout extends StatelessWidget {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: const [
-                                      Text(
+                                    children:  [
+                                      const Text(
                                         'Total: ',
                                         style: TextStyle(fontSize: 18),
                                       ),
                                       Text(
-                                        'R\$220,00',
-                                        style: TextStyle(fontSize: 18),
+                                        '${_total}',
+                                        style:const TextStyle(fontSize: 18),
                                       ),
                                     ],
                                   ),

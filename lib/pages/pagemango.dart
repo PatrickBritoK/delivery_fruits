@@ -2,8 +2,29 @@ import 'package:delivery_fruits/pages/pagestarted.dart';
 import 'package:flutter/material.dart';
 import 'package:delivery_fruits/pages/checkout.dart';
 
-class PageMango extends StatelessWidget {
+
+class PageMango extends StatefulWidget {
   const PageMango({super.key});
+
+ @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+class _MyWidgetState extends State<PageMango>{
+int _counter = 0;
+
+void _incrementCounter() {
+  setState(() {
+    _counter++;
+  });
+}
+
+void _decrementCounter() {
+  setState(() {
+    if (_counter > 0) {
+      _counter--;
+    }
+  });
+}
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +79,8 @@ class PageMango extends StatelessWidget {
                     ),
                     Container(
                       width: 140,
-                      margin: const EdgeInsets.symmetric(vertical: 15),
-                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.symmetric(vertical: 14),
+                      padding: const EdgeInsets.all(7),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
@@ -68,27 +89,67 @@ class PageMango extends StatelessWidget {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 5,
-                            offset: const Offset(
-                                0, 3), // changes position of shadow
+                            offset:const Offset(0, 3), // changes position of shadow
                           ),
                         ],
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
-                          Text(
-                            '-',
-                            style: TextStyle(fontSize: 34),
+                        children: [
+                           ClipOval(
+                            child: Material(
+                              color:  const Color.fromARGB(255, 255, 255,
+                                  255), 
+                              child: InkWell(
+                                onTap: _decrementCounter,
+                                child:const  SizedBox(
+                                  width: 40,
+                                  height: 40,
+                                  child: Center(
+                                    child: Text(
+                                      '-',
+                                      style: TextStyle(
+                                        fontSize:
+                                            35, 
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                           CircleAvatar(
-                            backgroundColor: Color.fromARGB(255, 241, 170, 224),
-                            child: Text('2',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 25)),
+                            backgroundColor: const Color.fromARGB(255, 241, 170,
+                                224), 
+                            child: Text(
+                              '$_counter',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                              ),
+                            ),
                           ),
-                          Text(
-                            '+',
-                            style: TextStyle(fontSize: 22),
+                           ClipOval(
+                            child: Material(
+                              color: const Color.fromARGB(255, 255, 255,
+                                  255), 
+                              child: InkWell(
+                                onTap: _incrementCounter,
+                                child: const SizedBox(
+                                  width: 40,
+                                  height: 40,
+                                  child: Center(
+                                    child: Text(
+                                      '+',
+                                      style: TextStyle(
+                                        fontSize:
+                                            20, // tamanho da fonte do botão "+"
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -366,6 +427,3 @@ class PageMango extends StatelessWidget {
     );
   }
 }
-
-
-//Checkout
