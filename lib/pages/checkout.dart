@@ -17,7 +17,7 @@ class _BananaWidgetState extends State<Checkout> {
   final double _pricebellpaper = 37.5;
   double _totalBanana = 0.0;
   double _totalbellpaper = 0.0;
-  
+
   void _increment() {
     setState(() {
       _quantitybanana++;
@@ -45,12 +45,13 @@ class _BananaWidgetState extends State<Checkout> {
       }
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     _totalBanana = _quantitybanana * _priceBanana;
     _totalbellpaper = _quantitybellpaper * _pricebellpaper;
-    _total = (_priceBanana * _quantitybanana ) + (_quantitybellpaper * _pricebellpaper);
+    _total = (_priceBanana * _quantitybanana) +
+        (_quantitybellpaper * _pricebellpaper);
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 230, 230, 230),
@@ -64,11 +65,11 @@ class _BananaWidgetState extends State<Checkout> {
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return const PageMango();
-                      }));
+                        MaterialPageRoute(builder: (context) {
+                      return const PageMango();
+                    }));
                   },
-                  child:const Icon(
+                  child: const Icon(
                     Icons.arrow_back_ios_new_rounded,
                     color: Color.fromARGB(255, 2, 2, 2),
                     size: 30,
@@ -158,9 +159,9 @@ class _BananaWidgetState extends State<Checkout> {
                               padding: const EdgeInsets.only(top: 7),
                               child: Row(
                                 children: [
-                                   Text(
+                                  Text(
                                     '$_quantitybanana pc',
-                                    style:const TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600,
                                       color: Color.fromARGB(255, 0, 0, 0),
@@ -169,9 +170,9 @@ class _BananaWidgetState extends State<Checkout> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 100),
                                     child: Row(
-                                      children:  [
+                                      children: [
                                         Text(
-                                          '\$${_totalBanana}',
+                                          '\$$_totalBanana',
                                           style: const TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold,
@@ -265,8 +266,8 @@ class _BananaWidgetState extends State<Checkout> {
                               padding: const EdgeInsets.only(top: 7),
                               child: Row(
                                 children: [
-                                   Text(
-                                    '${_quantitybellpaper} KG',
+                                  Text(
+                                    '$_quantitybellpaper KG',
                                     style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600,
@@ -276,10 +277,10 @@ class _BananaWidgetState extends State<Checkout> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 100),
                                     child: Row(
-                                      children:  [
+                                      children: [
                                         Text(
-                                          '\$${_totalbellpaper}',
-                                          style:const TextStyle(
+                                          '\$$_totalbellpaper',
+                                          style: const TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -336,7 +337,98 @@ class _BananaWidgetState extends State<Checkout> {
                         Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  String codigoInserido = '';
+                                  return AlertDialog(
+                                    title:
+                                        const Text('Put your promo code here'),
+                                    content: TextField(
+                                      decoration: const InputDecoration(
+                                        border: OutlineInputBorder(),
+                                        labelText: 'Promo Code',
+                                      ),
+                                      onChanged: ((value) {
+                                        codigoInserido = value;
+                                      }),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text(
+                                          'Cancel',
+                                          style: TextStyle(color: Colors.red),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                          if (codigoInserido == 'Pulsati' ||
+                                              codigoInserido == 'a') {
+                                            setState(() {
+                                              _total = _total * 0.2;
+                                            });
+                                            showDialog(
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return AlertDialog(
+                                                    title: const Text(
+                                                      'Promo Code Applied',
+                                                      style: TextStyle(
+                                                        color: Colors.green,
+                                                      ),
+                                                    ),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        },
+                                                        child: const Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                });
+                                          } else {
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  title: const Text(
+                                                    'Invalid Promo Code',
+                                                    style: TextStyle(
+                                                      color: Colors.red,
+                                                    ),
+                                                  ),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      },
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        },
+                                        child: const Text(
+                                          'Apply',
+                                          style: TextStyle(color: Colors.green),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                 const Color.fromARGB(
@@ -369,14 +461,14 @@ class _BananaWidgetState extends State<Checkout> {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children:  [
+                                    children: [
                                       const Text(
                                         'Subtotal:',
                                         style: TextStyle(fontSize: 18),
                                       ),
                                       Text(
-                                        '${_total}',
-                                        style:const TextStyle(fontSize: 18),
+                                        '\$$_total',
+                                        style: const TextStyle(fontSize: 18),
                                       ),
                                     ],
                                   ),
@@ -405,14 +497,14 @@ class _BananaWidgetState extends State<Checkout> {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children:  [
+                                    children: [
                                       const Text(
                                         'Total: ',
                                         style: TextStyle(fontSize: 18),
                                       ),
                                       Text(
-                                        '${_total}',
-                                        style:const TextStyle(fontSize: 18),
+                                        '\$$_total',
+                                        style: const TextStyle(fontSize: 18),
                                       ),
                                     ],
                                   ),
